@@ -15,6 +15,7 @@ export default function Weather() {
         console.log('Weather Data:', data);
         const condition = data?.properties?.timeseries[0]?.data?.next_1_hours?.summary?.symbol_code;
         console.log('Condition:', condition);
+        // condition = 'clearsky_day';
         if (condition.includes('fair_day')) {
           setBackgroundColor('lightyellow');
           setWeatherText('It is a fair day!');

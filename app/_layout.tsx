@@ -1,4 +1,6 @@
 import { Stack } from 'expo-router';
+import { Text } from 'react-native';
+import { Link } from 'expo-router';
 
 export default function RootLayout() {
   return (
@@ -11,9 +13,15 @@ export default function RootLayout() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-      }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="booking" />
+        headerRight: () => (
+          <Link href="/booking" style={{ color: '#fff', marginRight: 10 }}>
+            Go to Booking
+          </Link>
+        ),
+      }}
+    >
+      <Stack.Screen name="index" options={{ title: 'Home' }} />
+      <Stack.Screen name="booking" options={{ title: 'Booking' }} />
     </Stack>
   );
 }

@@ -7,12 +7,12 @@ export default function BookingScreen() {
   const isLandscape = width > height;
 
   return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          <CalendarTable />
-        </ScrollView>
-      </SafeAreaView>
-    );
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <CalendarTable />
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -2,10 +2,14 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import * as Location from 'expo-location';
 
+import { API_KEY } from '@env';
+
 // Define the base URL for your API
 const apiClient = axios.create({
     baseURL: 'https://localhost:44329/api',
     timeout: 1000,
+    headers: {
+    'Authorization': `Bearer supersecretkey`}
 });
 
 export const getPincodeData = async (pincode: number, apartmentNumber: number) => {
