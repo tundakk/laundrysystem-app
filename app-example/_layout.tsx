@@ -13,6 +13,8 @@ export default function RootLayout() {
         },
       }}>
       <Stack.Screen name="index" />
+      <Stack.Screen name="funktionalitet" />
+      <Stack.Screen name="native" />
       <Stack.Screen name="booking" />
     </Stack>
   );
