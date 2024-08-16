@@ -1,6 +1,5 @@
-import { Stack } from 'expo-router';
-import { View, Text, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
+import { Stack, Link } from 'expo-router';
+import { View, Text, StyleSheet, Platform  } from 'react-native';
 
 export default function RootLayout() {
   return (
@@ -22,9 +21,11 @@ export default function RootLayout() {
              <Link href="/lostandfound" style={styles.linkText}>
               Lost and Found
             </Link>
+            {Platform.OS !== 'web' && (
             <Link href="/gallery" style={styles.linkText}>
               View Gallery
             </Link>
+             )}
             <Link href="/booking" style={[styles.linkText, { marginLeft: 10 }]}>
               Go to Booking
             </Link>

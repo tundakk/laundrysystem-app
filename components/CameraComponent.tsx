@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import * as MediaLibrary from 'expo-media-library';
 
 export default function CameraComponent() {
   const [facing, setFacing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
+  const [mediaLibraryPermission, requestMediaLibraryPermission] = MediaLibrary.usePermissions();
   const cameraRef = useRef<CameraView | null>(null);
   const [isCameraReady, setIsCameraReady] = useState(false);
 
@@ -32,14 +34,32 @@ export default function CameraComponent() {
   function toggleCameraFacing() {
     setFacing((current) => (current === 'back' ? 'front' : 'back'));
   }
-
   const takePicture = async () => {
     if (isCameraReady && cameraRef.current) {
       try {
         const photo = await cameraRef.current.takePictureAsync();
-        console.log('Photo taken:', photo);
-
-        // Add further logic to handle the photo
+  
+        if (photo && photo.uri) {
+          console.log('Photo taken:', photo);
+  
+          if (Platform.OS !== 'web') {
+            if (!mediaLibraryPermission?.granted) {
+              const permission = await requestMediaLibraryPermission();
+              if (!permission.granted) {
+                alert('Permission to access the gallery is required to save photos.');
+                return;
+              }
+            }
+  
+            // Save the photo to the gallery
+            const asset = await MediaLibrary.createAssetAsync(photo.uri);
+            console.log('Photo saved to gallery:', asset.uri);
+  
+            alert('Photo saved to gallery!');
+          }
+        } else {
+          console.error('Failed to capture photo or photo URI is undefined.');
+        }
       } catch (error) {
         console.error('Error taking picture:', error);
       }
