@@ -6,7 +6,8 @@
     "goToBooking": "Gå till bokning",
     "home": "Hem",
     "booking": "Bokning",
-    "gallery": "Galleri"
+    "gallery": "Galleri",
+    "myBookings": "Mina bokningar"
   },
   "calendar": {
     "time": "Tid",
@@ -46,5 +47,16 @@
     "galleryAccess": "Galleriaccess krävs för att välja ett foto.",
     "noPhotos": "Inga foton",
     "noPhotosFound": "Inga foton hittades i ditt galleri."
+  },
+  "myBookings": {
+    "title": "Mina bokningar",
+    "noBookings": "Du har inga kommande bokningar.",
+    "cancel": "Avbryt",
+    "confirmTitle": "Avboka",
+    "confirmMessage": "Är du säker på att du vill avboka {{room}} kl. {{time}}?",
+    "yes": "Ja, avboka",
+    "no": "Nej",
+    "errorTitle": "Fel",
+    "cancelFailed": "Kunde inte avboka. Försök igen."
   }
 }

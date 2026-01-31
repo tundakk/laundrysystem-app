@@ -105,3 +105,22 @@ export const reportLostAndFound = async (
     });
     return response.data;
 };
+
+export interface MyBooking {
+    id: string;
+    status: string;
+    createdAt: string;
+    startTime: string;
+    endTime: string;
+    roomName: string;
+    roomLocation: string;
+}
+
+export const fetchMyBookings = async (): Promise<MyBooking[]> => {
+    const response = await apiClient.get('/Bookings/my');
+    return response.data;
+};
+
+export const cancelBooking = async (id: string): Promise<void> => {
+    await apiClient.delete(`/Bookings/${id}`);
+};

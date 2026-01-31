@@ -6,7 +6,8 @@
     "goToBooking": "Gå til booking",
     "home": "Hjem",
     "booking": "Booking",
-    "gallery": "Galleri"
+    "gallery": "Galleri",
+    "myBookings": "Mine bookinger"
   },
   "calendar": {
     "time": "Tid",
@@ -46,5 +47,16 @@
     "galleryAccess": "Galleriadgang kræves for at vælge et foto.",
     "noPhotos": "Ingen fotos",
     "noPhotosFound": "Ingen fotos fundet i dit galleri."
+  },
+  "myBookings": {
+    "title": "Mine bookinger",
+    "noBookings": "Du har ingen kommende bookinger.",
+    "cancel": "Annuller",
+    "confirmTitle": "Annuller booking",
+    "confirmMessage": "Er du sikker på, at du vil annullere din booking for {{room}} kl. {{time}}?",
+    "yes": "Ja, annuller",
+    "no": "Nej",
+    "errorTitle": "Fejl",
+    "cancelFailed": "Kunne ikke annullere bookingen. Prøv igen."
   }
 }

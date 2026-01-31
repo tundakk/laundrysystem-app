@@ -6,7 +6,8 @@
     "goToBooking": "Go to Booking",
     "home": "Home",
     "booking": "Booking",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "myBookings": "My Bookings"
   },
   "calendar": {
     "time": "Time",
@@ -46,5 +47,16 @@
     "galleryAccess": "Gallery access is required to select a photo.",
     "noPhotos": "No photos",
     "noPhotosFound": "No photos found in your gallery."
+  },
+  "myBookings": {
+    "title": "My Bookings",
+    "noBookings": "You have no upcoming bookings.",
+    "cancel": "Cancel",
+    "confirmTitle": "Cancel Booking",
+    "confirmMessage": "Are you sure you want to cancel your booking for {{room}} at {{time}}?",
+    "yes": "Yes, Cancel",
+    "no": "No",
+    "errorTitle": "Error",
+    "cancelFailed": "Could not cancel the booking. Please try again."
   }
 }

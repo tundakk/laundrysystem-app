@@ -32,6 +32,9 @@ export default function RootLayout() {
             <Link href="/booking" style={[styles.linkText, { marginLeft: 10 }]}>
               {t('header.goToBooking')}
             </Link>
+            <Link href="/mybookings" style={[styles.linkText, { marginLeft: 10 }]}>
+              {t('header.myBookings')}
+            </Link>
           </View>
         ),
       }}
@@ -40,6 +43,7 @@ export default function RootLayout() {
       <Stack.Screen name="index" options={{ title: t('header.home') }} />
       <Stack.Screen name="booking" options={{ title: t('header.booking') }} />
       <Stack.Screen name="gallery" options={{ title: t('header.gallery') }} />
+      <Stack.Screen name="mybookings" options={{ title: t('header.myBookings') }} />
     </Stack>
   );
 }
