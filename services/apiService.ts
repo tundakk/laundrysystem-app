@@ -72,3 +72,36 @@ export const getWeatherData = async () => {
     }
     return await Location.getCurrentPositionAsync({});
 };
+
+export const reportLostAndFound = async (
+    photoUri: string,
+    description: string,
+    buildingId: string,
+    onProgress?: (progress: number) => void
+) => {
+    const formData = new FormData();
+    formData.append('buildingId', buildingId);
+    if (description) {
+        formData.append('description', description);
+    }
+
+    const filename = photoUri.split('/').pop() || 'photo.jpg';
+    const match = /\.(\w+)$/.exec(filename);
+    const type = match ? `image/${match[1]}` : 'image/jpeg';
+
+    formData.append('file', {
+        uri: photoUri,
+        name: filename,
+        type,
+    } as any);
+
+    const response = await apiClient.post('/lost-found', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+            if (onProgress && progressEvent.total) {
+                onProgress(Math.round((progressEvent.loaded * 100) / progressEvent.total));
+            }
+        },
+    });
+    return response.data;
+};
