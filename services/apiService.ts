@@ -124,3 +124,39 @@ export const fetchMyBookings = async (): Promise<MyBooking[]> => {
 export const cancelBooking = async (id: string): Promise<void> => {
     await apiClient.delete(`/Bookings/${id}`);
 };
+
+export interface LostAndFoundItem {
+    id: string;
+    buildingId: string;
+    reportedByUserId?: string | null;
+    pictureUrl: string;
+    description?: string | null;
+    dateFound: string;
+    isClaimed: boolean;
+    claimedAt?: string | null;
+}
+
+export interface LostAndFoundPagedResponse {
+    items: LostAndFoundItem[];
+    totalCount: number;
+    page: number;
+    pageSize: number;
+    totalPages: number;
+}
+
+export const fetchLostAndFoundItems = async (
+    page = 1,
+    pageSize = 20
+): Promise<LostAndFoundPagedResponse> => {
+    const response = await apiClient.get('/lost-found', {
+        params: { page, pageSize },
+    });
+    return response.data;
+};
+
+export const fetchLostAndFoundById = async (
+    id: string
+): Promise<LostAndFoundItem> => {
+    const response = await apiClient.get(`/lost-found/${id}`);
+    return response.data;
+};

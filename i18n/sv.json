@@ -46,7 +46,13 @@
     "permissionNeeded": "Behörighet krävs",
     "galleryAccess": "Galleriaccess krävs för att välja ett foto.",
     "noPhotos": "Inga foton",
-    "noPhotosFound": "Inga foton hittades i ditt galleri."
+    "noPhotosFound": "Inga foton hittades i ditt galleri.",
+    "browseTab": "Bläddra",
+    "reportTab": "Rapportera",
+    "noItems": "Inga upphittade föremål ännu.",
+    "noDescription": "Ingen beskrivning",
+    "claimed": "Uthämtad",
+    "close": "Stäng"
   },
   "myBookings": {
     "title": "Mina bokningar",

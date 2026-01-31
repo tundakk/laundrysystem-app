@@ -46,7 +46,13 @@
     "permissionNeeded": "Tilladelse krævet",
     "galleryAccess": "Galleriadgang kræves for at vælge et foto.",
     "noPhotos": "Ingen fotos",
-    "noPhotosFound": "Ingen fotos fundet i dit galleri."
+    "noPhotosFound": "Ingen fotos fundet i dit galleri.",
+    "browseTab": "Gennemse",
+    "reportTab": "Anmeld",
+    "noItems": "Ingen hittegods endnu.",
+    "noDescription": "Ingen beskrivelse",
+    "claimed": "Afhentet",
+    "close": "Luk"
   },
   "myBookings": {
     "title": "Mine bookinger",

@@ -46,7 +46,13 @@
     "permissionNeeded": "Permission needed",
     "galleryAccess": "Gallery access is required to select a photo.",
     "noPhotos": "No photos",
-    "noPhotosFound": "No photos found in your gallery."
+    "noPhotosFound": "No photos found in your gallery.",
+    "browseTab": "Browse",
+    "reportTab": "Report",
+    "noItems": "No lost & found items yet.",
+    "noDescription": "No description",
+    "claimed": "Claimed",
+    "close": "Close"
   },
   "myBookings": {
     "title": "My Bookings",
