@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, useWindowDimensions } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import PincodePopup from './PincodePopup';
-import { getPincodeData } from '../services/apiService';  // Make sure to import your API function
+import { getPincodeData } from '../services/apiService';
 
 export default function CalendarTable() {
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
+  const { t } = useTranslation();
 
-  const tableHead = ['Time', ...generateDates()];
-  const { width } = useWindowDimensions();  // Get screen width
+  const tableHead = [t('calendar.time'), ...generateDates()];
+  const { width } = useWindowDimensions();
 
   const columnWidth = width / tableHead.length;
 
@@ -23,23 +25,19 @@ export default function CalendarTable() {
 
   const handlePincodeSubmit = async (houseNumber: string, pincode: string) => {
     try {
-      // Convert pincode and houseNumber to integers
       const pincodeInt = parseInt(pincode, 10);
       const houseNumberInt = parseInt(houseNumber, 10);
 
-      // Call the API
       const data = await getPincodeData(pincodeInt, houseNumberInt);
-      
+
       console.log(`API Response:`, data);
 
-      // Optionally handle success logic, e.g., displaying a success message
-      alert(`Booked: ${selectedTime} on ${selectedDate} for House Number: ${houseNumber} with Pincode: ${pincode}`);
-      
+      alert(t('calendar.booked', { time: selectedTime, date: selectedDate, house: houseNumber, pin: pincode }));
+
       setPopupVisible(false);
     } catch (error) {
       console.error('API call failed:', error);
-      // Handle error, e.g., display a message to the user
-      alert('Failed to book the slot. Please try again.');
+      alert(t('calendar.bookingFailed'));
     }
   };
 
@@ -47,9 +45,9 @@ export default function CalendarTable() {
     <View style={styles.container}>
       <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
         <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-        <Rows 
-          data={generateTimeSlots(handlePress)} 
-          textStyle={styles.text} 
+        <Rows
+          data={generateTimeSlots(handlePress)}
+          textStyle={styles.text}
         />
       </Table>
       <PincodePopup
@@ -103,15 +101,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
   },
-  cell: { 
+  cell: {
     width: 60,
-    height: 60, 
-    justifyContent: 'center', 
+    height: 60,
+    justifyContent: 'center',
     margin: 4,
   },
   circle: {
-    width: '80%',      
-    height: '80%',     
+    width: '80%',
+    height: '80%',
     borderRadius: 30,
     backgroundColor: 'green',
   },

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Modal, StyleSheet, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 interface PincodePopupProps {
     visible: boolean;
@@ -11,6 +12,7 @@ const PincodePopup: React.FC<PincodePopupProps> = ({ visible, onClose, onSubmit 
     const [houseNumber, setHouseNumber] = useState('');
     const [pincode, setPincode] = useState('');
     const [isHouseNumberSet, setIsHouseNumberSet] = useState(false);
+    const { t } = useTranslation();
 
     const handleDigitPress = (digit: string) => {
         if (!isHouseNumberSet) {
@@ -24,18 +26,18 @@ const PincodePopup: React.FC<PincodePopupProps> = ({ visible, onClose, onSubmit 
 
     const handleBackPress = () => {
         if (!isHouseNumberSet) {
-            setHouseNumber(houseNumber.slice(0, -1)); // Remove the last digit from the house number
+            setHouseNumber(houseNumber.slice(0, -1));
         } else {
-            setPincode(pincode.slice(0, -1)); // Remove the last digit from the pincode
+            setPincode(pincode.slice(0, -1));
         }
     };
 
     const handleOkPress = () => {
         if (!isHouseNumberSet) {
             if (houseNumber.trim() !== '') {
-                setIsHouseNumberSet(true); // Proceed to PIN code input
+                setIsHouseNumberSet(true);
             } else {
-                alert('Please enter a house number');
+                alert(t('pincode.pleaseEnterHouse'));
             }
         } else {
             if (pincode.length === 4) {
@@ -43,7 +45,7 @@ const PincodePopup: React.FC<PincodePopupProps> = ({ visible, onClose, onSubmit 
                 resetState();
                 onClose();
             } else {
-                alert('Pincode must be 4 digits');
+                alert(t('pincode.pinMustBe4'));
             }
         }
     };
@@ -64,7 +66,7 @@ const PincodePopup: React.FC<PincodePopupProps> = ({ visible, onClose, onSubmit 
                 <View style={styles.modalView}>
                     {!isHouseNumberSet ? (
                         <>
-                            <Text>Enter House Number</Text>
+                            <Text>{t('pincode.enterHouseNumber')}</Text>
                             <View style={styles.pincodeContainer}>
                                 {Array.from({ length: 9 }, (_, i) => (
                                     <TouchableOpacity
@@ -102,7 +104,7 @@ const PincodePopup: React.FC<PincodePopupProps> = ({ visible, onClose, onSubmit 
                         </>
                     ) : (
                         <>
-                            <Text>Enter Pincode</Text>
+                            <Text>{t('pincode.enterPincode')}</Text>
                             <View style={styles.pincodeContainer}>
                                 {Array.from({ length: 9 }, (_, i) => (
                                     <TouchableOpacity

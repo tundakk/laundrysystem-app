@@ -1,0 +1,50 @@
+{
+  "header": {
+    "title": "Tvättbokning",
+    "lostAndFound": "Upphittat",
+    "viewGallery": "Se galleri",
+    "goToBooking": "Gå till bokning",
+    "home": "Hem",
+    "booking": "Bokning",
+    "gallery": "Galleri"
+  },
+  "calendar": {
+    "time": "Tid",
+    "booked": "Bokad: {{time}} den {{date}} för lägenhet: {{house}} med pinkod: {{pin}}",
+    "bookingFailed": "Kunde inte boka. Försök igen."
+  },
+  "pincode": {
+    "enterHouseNumber": "Ange lägenhetsnummer",
+    "enterPincode": "Ange pinkod",
+    "pleaseEnterHouse": "Ange ett lägenhetsnummer",
+    "pinMustBe4": "Pinkoden måste vara 4 siffror"
+  },
+  "weather": {
+    "fairDay": "Det är en fin dag!",
+    "raining": "Det regnar!",
+    "gloomy": "Vilken grå dag!",
+    "clearNight": "Det är en klar natt!",
+    "clearDay": "Det är en klar dag!"
+  },
+  "lostFound": {
+    "title": "Upphittat",
+    "instructions": "Rapportera ett föremål du hittat eller tappat genom att ta ett foto eller välja ett från ditt galleri.",
+    "takePhoto": "Ta ett foto",
+    "chooseGallery": "Välj från galleri",
+    "reportTitle": "Rapportera upphittat föremål",
+    "retakePhoto": "Ta nytt foto",
+    "description": "Beskrivning",
+    "descriptionPlaceholder": "Beskriv föremålet...",
+    "uploading": "Laddar upp... {{progress}}%",
+    "submit": "Skicka",
+    "cancel": "Avbryt",
+    "success": "Din rapport har skickats.",
+    "successTitle": "Klart",
+    "uploadFailed": "Kunde inte skicka rapporten. Försök igen.",
+    "uploadFailedTitle": "Uppladdning misslyckades",
+    "permissionNeeded": "Behörighet krävs",
+    "galleryAccess": "Galleriaccess krävs för att välja ett foto.",
+    "noPhotos": "Inga foton",
+    "noPhotosFound": "Inga foton hittades i ditt galleri."
+  }
+}

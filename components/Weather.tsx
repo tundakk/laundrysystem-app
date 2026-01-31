@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { getWeatherData } from '../services/apiService';
 
 export default function Weather() {
   const [weather, setWeather] = useState<any>(null);
   const [backgroundColor, setBackgroundColor] = useState<string>('white');
-  const [weatherText, setWeatherText] = useState<string>('');
+  const [weatherKey, setWeatherKey] = useState<string>('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -15,22 +17,21 @@ export default function Weather() {
         console.log('Weather Data:', data);
         const condition = data?.properties?.timeseries[0]?.data?.next_1_hours?.summary?.symbol_code;
         console.log('Condition:', condition);
-        // condition = 'clearsky_day';
         if (condition.includes('fair_day')) {
           setBackgroundColor('lightyellow');
-          setWeatherText('It is a fair day!');
+          setWeatherKey('weather.fairDay');
         } else if (condition.includes('rain')) {
           setBackgroundColor('blue');
-          setWeatherText('It is raining!');
+          setWeatherKey('weather.raining');
         } else if (condition.includes('cloudy')) {
           setBackgroundColor('gray');
-          setWeatherText('What a gloomy day!');
+          setWeatherKey('weather.gloomy');
         } else if (condition.includes('clearsky_night')) {
           setBackgroundColor('darkblue');
-          setWeatherText('It is a clear night!');
+          setWeatherKey('weather.clearNight');
         } else if (condition.includes('clearsky_day')) {
           setBackgroundColor('lightblue');
-          setWeatherText('It is a clear day!');
+          setWeatherKey('weather.clearDay');
         }
       } catch (error) {
         console.error('Error:', error);
@@ -42,7 +43,7 @@ export default function Weather() {
 
   return (
     <View style={[styles.container, { backgroundColor }]}>
-      <Text>{weatherText}</Text>
+      <Text>{weatherKey ? t(weatherKey) : ''}</Text>
     </View>
   );
 }

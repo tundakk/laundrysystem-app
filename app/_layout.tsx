@@ -1,7 +1,11 @@
 import { Stack, Link } from 'expo-router';
 import { View, Text, StyleSheet, Platform  } from 'react-native';
+import '../i18n';
+import { useTranslation } from 'react-i18next';
 
 export default function RootLayout() {
+  const { t } = useTranslation();
+
   return (
     <Stack
       screenOptions={{
@@ -9,34 +13,33 @@ export default function RootLayout() {
           backgroundColor: '#f4511e',
         },
         headerTintColor: '#fff',
-        headerTitleAlign: 'center', // This centers the title and the Lost and Found link together
+        headerTitleAlign: 'center',
         headerTitle: () => (
           <View style={styles.headerContainer}>
-            <Text style={styles.titleText}>Laundry Booking</Text>
-           
+            <Text style={styles.titleText}>{t('header.title')}</Text>
           </View>
         ),
         headerRight: () => (
           <View style={styles.headerRightContainer}>
              <Link href="/lostandfound" style={styles.linkText}>
-              Lost and Found
+              {t('header.lostAndFound')}
             </Link>
             {Platform.OS !== 'web' && (
             <Link href="/gallery" style={styles.linkText}>
-              View Gallery
+              {t('header.viewGallery')}
             </Link>
              )}
             <Link href="/booking" style={[styles.linkText, { marginLeft: 10 }]}>
-              Go to Booking
+              {t('header.goToBooking')}
             </Link>
           </View>
         ),
       }}
     >
-      <Stack.Screen name="lostandfound" options={{ title: 'Lost and Found' }} />
-      <Stack.Screen name="index" options={{ title: 'Home' }} />
-      <Stack.Screen name="booking" options={{ title: 'Booking' }} />
-      <Stack.Screen name="gallery" options={{ title: 'Gallery' }} />
+      <Stack.Screen name="lostandfound" options={{ title: t('header.lostAndFound') }} />
+      <Stack.Screen name="index" options={{ title: t('header.home') }} />
+      <Stack.Screen name="booking" options={{ title: t('header.booking') }} />
+      <Stack.Screen name="gallery" options={{ title: t('header.gallery') }} />
     </Stack>
   );
 }
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 18,
-    marginRight: 15, // Space between title and Lost and Found link
+    marginRight: 15,
   },
   linkText: {
     color: '#fff',

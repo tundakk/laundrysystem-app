@@ -13,6 +13,7 @@ import {
   Platform,
 } from 'react-native';
 import * as MediaLibrary from 'expo-media-library';
+import { useTranslation } from 'react-i18next';
 import CameraComponent from '../components/CameraComponent';
 import { reportLostAndFound } from '../services/apiService';
 
@@ -24,6 +25,7 @@ export default function LostAndFoundScreen() {
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const { t } = useTranslation();
 
   const handlePhotoTaken = (uri: string) => {
     setPhotoUri(uri);
@@ -33,7 +35,7 @@ export default function LostAndFoundScreen() {
   const handlePickFromGallery = async () => {
     const { status } = await MediaLibrary.requestPermissionsAsync();
     if (status !== 'granted') {
-      Alert.alert('Permission needed', 'Gallery access is required to select a photo.');
+      Alert.alert(t('lostFound.permissionNeeded'), t('lostFound.galleryAccess'));
       return;
     }
 
@@ -50,7 +52,7 @@ export default function LostAndFoundScreen() {
         setScreen('form');
       }
     } else {
-      Alert.alert('No photos', 'No photos found in your gallery.');
+      Alert.alert(t('lostFound.noPhotos'), t('lostFound.noPhotosFound'));
     }
   };
 
@@ -61,12 +63,11 @@ export default function LostAndFoundScreen() {
     setUploadProgress(0);
 
     try {
-      // Using a placeholder buildingId - in production this would come from user context
       await reportLostAndFound(photoUri, description, '1', (progress) => {
         setUploadProgress(progress);
       });
 
-      Alert.alert('Success', 'Your lost & found report has been submitted.', [
+      Alert.alert(t('lostFound.successTitle'), t('lostFound.success'), [
         {
           text: 'OK',
           onPress: () => {
@@ -77,7 +78,7 @@ export default function LostAndFoundScreen() {
         },
       ]);
     } catch (error) {
-      Alert.alert('Upload failed', 'Could not submit the report. Please try again.');
+      Alert.alert(t('lostFound.uploadFailedTitle'), t('lostFound.uploadFailed'));
       console.error('Upload error:', error);
     } finally {
       setUploading(false);
@@ -96,7 +97,7 @@ export default function LostAndFoundScreen() {
       <View style={styles.fullScreen}>
         <CameraComponent onPhotoTaken={handlePhotoTaken} />
         <TouchableOpacity style={styles.cancelButton} onPress={() => setScreen('menu')}>
-          <Text style={styles.cancelButtonText}>Cancel</Text>
+          <Text style={styles.cancelButtonText}>{t('lostFound.cancel')}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -109,20 +110,20 @@ export default function LostAndFoundScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
         <ScrollView contentContainerStyle={styles.formContainer}>
-          <Text style={styles.title}>Report Lost & Found Item</Text>
+          <Text style={styles.title}>{t('lostFound.reportTitle')}</Text>
 
           {photoUri && (
             <Image source={{ uri: photoUri }} style={styles.preview} resizeMode="cover" />
           )}
 
           <TouchableOpacity style={styles.retakeButton} onPress={() => setScreen('camera')}>
-            <Text style={styles.retakeText}>Retake Photo</Text>
+            <Text style={styles.retakeText}>{t('lostFound.retakePhoto')}</Text>
           </TouchableOpacity>
 
-          <Text style={styles.label}>Description</Text>
+          <Text style={styles.label}>{t('lostFound.description')}</Text>
           <TextInput
             style={styles.input}
-            placeholder="Describe the item..."
+            placeholder={t('lostFound.descriptionPlaceholder')}
             value={description}
             onChangeText={setDescription}
             multiline
@@ -133,7 +134,7 @@ export default function LostAndFoundScreen() {
           {uploading && (
             <View style={styles.progressContainer}>
               <ActivityIndicator size="large" color="#f4511e" />
-              <Text style={styles.progressText}>Uploading... {uploadProgress}%</Text>
+              <Text style={styles.progressText}>{t('lostFound.uploading', { progress: uploadProgress })}</Text>
               <View style={styles.progressBarBg}>
                 <View style={[styles.progressBarFill, { width: `${uploadProgress}%` }]} />
               </View>
@@ -146,14 +147,14 @@ export default function LostAndFoundScreen() {
               onPress={handleSubmit}
               disabled={uploading}
             >
-              <Text style={styles.submitText}>{uploading ? 'Uploading...' : 'Submit'}</Text>
+              <Text style={styles.submitText}>{uploading ? t('lostFound.uploading', { progress: uploadProgress }) : t('lostFound.submit')}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.cancelFormButton}
               onPress={handleCancel}
               disabled={uploading}
             >
-              <Text style={styles.cancelFormText}>Cancel</Text>
+              <Text style={styles.cancelFormText}>{t('lostFound.cancel')}</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -164,17 +165,17 @@ export default function LostAndFoundScreen() {
   // Menu screen
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Lost and Found</Text>
+      <Text style={styles.title}>{t('lostFound.title')}</Text>
       <Text style={styles.instructions}>
-        Report an item you found or lost by taking a photo or selecting one from your gallery.
+        {t('lostFound.instructions')}
       </Text>
 
       <TouchableOpacity style={styles.menuButton} onPress={() => setScreen('camera')}>
-        <Text style={styles.menuButtonText}>Take a Photo</Text>
+        <Text style={styles.menuButtonText}>{t('lostFound.takePhoto')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.menuButton} onPress={handlePickFromGallery}>
-        <Text style={styles.menuButtonText}>Choose from Gallery</Text>
+        <Text style={styles.menuButtonText}>{t('lostFound.chooseGallery')}</Text>
       </TouchableOpacity>
     </View>
   );

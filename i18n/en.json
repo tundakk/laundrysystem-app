@@ -1,0 +1,50 @@
+{
+  "header": {
+    "title": "Laundry Booking",
+    "lostAndFound": "Lost and Found",
+    "viewGallery": "View Gallery",
+    "goToBooking": "Go to Booking",
+    "home": "Home",
+    "booking": "Booking",
+    "gallery": "Gallery"
+  },
+  "calendar": {
+    "time": "Time",
+    "booked": "Booked: {{time}} on {{date}} for House Number: {{house}} with Pincode: {{pin}}",
+    "bookingFailed": "Failed to book the slot. Please try again."
+  },
+  "pincode": {
+    "enterHouseNumber": "Enter House Number",
+    "enterPincode": "Enter Pincode",
+    "pleaseEnterHouse": "Please enter a house number",
+    "pinMustBe4": "Pincode must be 4 digits"
+  },
+  "weather": {
+    "fairDay": "It is a fair day!",
+    "raining": "It is raining!",
+    "gloomy": "What a gloomy day!",
+    "clearNight": "It is a clear night!",
+    "clearDay": "It is a clear day!"
+  },
+  "lostFound": {
+    "title": "Lost and Found",
+    "instructions": "Report an item you found or lost by taking a photo or selecting one from your gallery.",
+    "takePhoto": "Take a Photo",
+    "chooseGallery": "Choose from Gallery",
+    "reportTitle": "Report Lost & Found Item",
+    "retakePhoto": "Retake Photo",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe the item...",
+    "uploading": "Uploading... {{progress}}%",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "success": "Your lost & found report has been submitted.",
+    "successTitle": "Success",
+    "uploadFailed": "Could not submit the report. Please try again.",
+    "uploadFailedTitle": "Upload failed",
+    "permissionNeeded": "Permission needed",
+    "galleryAccess": "Gallery access is required to select a photo.",
+    "noPhotos": "No photos",
+    "noPhotosFound": "No photos found in your gallery."
+  }
+}

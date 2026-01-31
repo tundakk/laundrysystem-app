@@ -1,0 +1,50 @@
+{
+  "header": {
+    "title": "Vaskebooking",
+    "lostAndFound": "Hittegods",
+    "viewGallery": "Se galleri",
+    "goToBooking": "Gå til booking",
+    "home": "Hjem",
+    "booking": "Booking",
+    "gallery": "Galleri"
+  },
+  "calendar": {
+    "time": "Tid",
+    "booked": "Booket: {{time}} den {{date}} for lejlighed: {{house}} med pinkode: {{pin}}",
+    "bookingFailed": "Kunne ikke booke. Prøv igen."
+  },
+  "pincode": {
+    "enterHouseNumber": "Indtast lejlighedsnummer",
+    "enterPincode": "Indtast pinkode",
+    "pleaseEnterHouse": "Indtast venligst et lejlighedsnummer",
+    "pinMustBe4": "Pinkoden skal være 4 cifre"
+  },
+  "weather": {
+    "fairDay": "Det er en fin dag!",
+    "raining": "Det regner!",
+    "gloomy": "Sikke en grå dag!",
+    "clearNight": "Det er en klar nat!",
+    "clearDay": "Det er en klar dag!"
+  },
+  "lostFound": {
+    "title": "Hittegods",
+    "instructions": "Anmeld en genstand du har fundet eller mistet ved at tage et foto eller vælge et fra dit galleri.",
+    "takePhoto": "Tag et foto",
+    "chooseGallery": "Vælg fra galleri",
+    "reportTitle": "Anmeld hittegods",
+    "retakePhoto": "Tag nyt foto",
+    "description": "Beskrivelse",
+    "descriptionPlaceholder": "Beskriv genstanden...",
+    "uploading": "Uploader... {{progress}}%",
+    "submit": "Indsend",
+    "cancel": "Annuller",
+    "success": "Din hittegods-anmeldelse er indsendt.",
+    "successTitle": "Succes",
+    "uploadFailed": "Kunne ikke indsende anmeldelsen. Prøv igen.",
+    "uploadFailedTitle": "Upload fejlede",
+    "permissionNeeded": "Tilladelse krævet",
+    "galleryAccess": "Galleriadgang kræves for at vælge et foto.",
+    "noPhotos": "Ingen fotos",
+    "noPhotosFound": "Ingen fotos fundet i dit galleri."
+  }
+}
